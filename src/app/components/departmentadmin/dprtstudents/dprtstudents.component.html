@@ -1,0 +1,31 @@
+<!-- <mat-sidenav-container class="sidenav-container" style="direction: rtl;">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
+      <mat-toolbar class="text-warning border-bottom ">S.I.S <span class="spacer"></span><mat-icon class="mat-18" class="text-danger float-left">account_balance</mat-icon></mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item href="#" [routerLink]="['/dprtstudents']" routerLinkActive="router-link-active" class="text-primary"><span>تسجيل طالب جديد</span><span class="spacer"></span><mat-icon class="mat-18">people</mat-icon></a>
+        <a mat-list-item href="#">استيراد طلبة</a>
+        <a mat-list-item href="#">قائمة الطلاب</a>
+        <a mat-list-item href="#">تصدير طلبة</a>
+        <a mat-list-item href="#">تصدير معرفات</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <span>sis</span>
+      </mat-toolbar>
+    </mat-sidenav-content>
+    <router-outlet name="students"></router-outlet>
+  </mat-sidenav-container>
+   -->

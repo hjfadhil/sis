@@ -1,0 +1,11 @@
+a {
+    font-family: 'Cairo', sans-serif;
+	font-size: 1.05em;
+	font-weight: 900;
+	line-height: 1.2;
+	margin: 0;
+}
+
+.active {
+	color: navy;
+}

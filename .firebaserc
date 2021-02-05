@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "ubafs-efd6f"
+  },
+  "targets": {
+    "ubafs-efd6f": {
+      "hosting": {
+        "sis": [
+          "sisuobasrah"
+        ]
+      }
+    }
+  }
+}

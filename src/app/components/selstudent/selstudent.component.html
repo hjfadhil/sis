@@ -1,0 +1,176 @@
+<div class="row p-4" style="direction: rtl; text-align: right;">
+    <div class="col-sm-12">
+        <div class="alert alert-info" style="position:sticky; z-index: 10;">
+            <button class="btn btn-info mx-2" (click)="back()">Back</button>
+            <button class="btn btn-danger mx-2" (click)="delete()">Delete</button>
+            <button class="btn btn-warning mx-2" (click)="pictures()">المستمسكات</button>
+            <button class="btn btn-success mx-2" (click)="approved()">مصادقة</button>
+            <div class="btn-group mx-4" role="group" aria-label="Basic example" style="direction: ltr;">
+                <button type="button" class="btn btn-outline-warning" title="previous" (click)="prev()">السابق</button>
+                <button type="button" class="btn btn-outline-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                <button type="button" class="btn btn-outline-warning" (click)="next()" title="next">اللاحق</button>
+            </div>
+            <div class="btn-group mx-2 mt-1" role="group" aria-label="Basic outlined example" style="direction: ltr;">
+                <a [routerLink]="['/collegeadmin', {outlets:{'col':['selstudent10']}}]" routerLinkActive="router-link-active"  type="button" class="btn btn-outline-primary">Page10</a>
+                <a [routerLink]="['/collegeadmin', {outlets:{'col':['selstudent9']}}]" routerLinkActive="router-link-active"  type="button" class="btn btn-outline-primary">Page9</a>
+                <a [routerLink]="['/collegeadmin', {outlets:{'col':['selstudent8']}}]" routerLinkActive="router-link-active"  type="button" class="btn btn-outline-primary">Page8</a>
+                <a [routerLink]="['/collegeadmin', {outlets:{'col':['selstudent7']}}]" routerLinkActive="router-link-active"  type="button" class="btn btn-outline-primary">Page7</a>
+                <a [routerLink]="['/collegeadmin', {outlets:{'col':['selstudent6']}}]" routerLinkActive="router-link-active"  type="button" class="btn btn-outline-primary">Page6</a>
+                <a [routerLink]="['/collegeadmin', {outlets:{'col':['selstudent5']}}]" routerLinkActive="router-link-active"  type="button" class="btn btn-outline-primary">Page5</a>
+                <a [routerLink]="['/collegeadmin', {outlets:{'col':['selstudent4']}}]" routerLinkActive="router-link-active"  type="button" class="btn btn-outline-primary">Page4</a>
+                <a [routerLink]="['/collegeadmin', {outlets:{'col':['selstudent3']}}]" routerLinkActive="router-link-active"  type="button" class="btn btn-outline-primary">Page3</a>
+                <a [routerLink]="['/collegeadmin', {outlets:{'col':['selstudent2']}}]" routerLinkActive="router-link-active"  type="button" class="btn btn-outline-primary">Page2</a>
+                <a [routerLink]="['/collegeadmin', {outlets:{'col':['selstudent']}}]" routerLinkActive="router-link-active"  type="button" class="btn btn-outline-primary active">Page1</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row p-4" style="direction: rtl; text-align: right;">
+    <div style="direction: ltr; width: 100%; display: flex; justify-content: center; align-items: center;" *ngIf="spin" class="col-sm-12">
+        <div class="spinner-grow text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div class="col-sm-9" *ngIf="!spin">
+        <table class="table table-bordered table-stripped" *ngIf="student" style="font-size: 1.1rem;">
+            <tbody>
+                <tr *ngIf="student.approved">
+                    <td class="aletr alert-success text-center" colspan="2"><span>تمت المصادقة على البيانات</span></td>
+                </tr>
+                <tr>
+                    <td>القسم</td>
+                    <td>
+                        <select name="dprt" id="dprt" [(ngModel)]="seldprt" class="form-control" (change)="setstudentdepartment($event.target)">
+                            <option [value]="dprt.id" *ngFor="let dprt of departments">{{dprt.name}}</option>
+                        </select>
+                        <div *ngIf="dprtchange == 1" class="spinner-border text-danger" role="status">
+                            <span class="visually-hidden"></span>
+                        </div>
+                        <mat-icon class="mat-18 text-success" *ngIf="dprtchange == 2">done</mat-icon>
+                    </td>
+                </tr>
+                <tr>
+                    <td>الدراسة</td>
+                    <select name="study" id="study" [(ngModel)]="student.study" class="form-control">
+                        <option value="{{s.name}}" *ngFor="let s of studies">{{s.name}}</option>
+                    </select>
+                </tr>
+                <tr>
+                    <td>الاسم</td>
+                    <td>
+                        <input type="text" name="fullname" id="fullname" [(ngModel)]="student.fullname" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <td>الاسم بالانكليزي</td>
+                    <td>
+                        <input type="text" name="efullname" id="efullname" [(ngModel)]="student.efullname" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <td>تسلسل الطالب في القسم</td>
+                    <td>
+                        <input type="text" (change)="unc()" required name="dprtnum" id="dprtnum" [(ngModel)]="student.dprtnum" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <td>الرقم الجامعي</td>
+                    <td>
+                        <form class="d-flex">
+                            <input type="text" disabled name="univnum" id="univnum" [(ngModel)]="student.univnum" class="form-control me-2">
+                            <button class="btn btn-outline-success" type="button" [disabled]="rbd" (click)="unrefresh()"><mat-icon class="mat-18">refresh</mat-icon></button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>العنوان-المحافظة</td>
+                    <input type="text" name="gaddress" id="gaddress" [(ngModel)]="student.gaddress" class="form-control">
+                </tr>
+                <tr>
+                    <td>العنوان-القضاء-المدينة</td>
+                    <input type="text" name="address" id="address" [(ngModel)]="student.address" class="form-control">
+                </tr>
+                <tr>
+                    <td>الهاتف</td>
+                    <input type="text" name="phone" id="phone" [(ngModel)]="student.phone" class="form-control">
+                </tr>
+                <tr>
+                    <td>فصيلة الدم</td>
+                    <input type="text" name="bc" id="bc" [(ngModel)]="student.bc" class="form-control">
+                </tr>
+                <tr>
+                    <td>الجنس</td>
+                    <select name="study" id="study" [(ngModel)]="student.gen" class="form-control">
+                        <option value="{{g.id}}" *ngFor="let g of gender">{{g.name}}</option>
+                    </select>
+                </tr>
+                <tr>
+                    <td>الجنسية</td>
+                    <input type="text" name="cit" id="cit" [(ngModel)]="student.cit" class="form-control">
+                </tr>
+                <tr>
+                    <td>القومية</td>
+                    <input type="text" name="nat" id="nat" [(ngModel)]="student.nat" class="form-control">
+                </tr>
+                <tr>
+                    <td>المواليد</td>
+                    <input type="date" name="bd" id="bd" [(ngModel)]="student.bd" class="form-control">
+                </tr>
+                <tr>
+                    <td>البريد الالكتروني</td>
+                    <input disabled type="text" name="email" id="email" [(ngModel)]="student.email" class="form-control">
+                </tr>
+                <tr>
+                    <td colspan="2" style="align-items: center;" class="text-center">
+                        <button class="btn btn-warning" (click)="update()">Update</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <button *ngIf="student.univnum" [routerLink]="['/collegeadmin', {outlets: {'col':['identities']}}]" routerLinkActive="router-link-active"  class="btn btn-primary" >هوية الطالب</button>
+    </div>
+    <!-- <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-4">
+                <div>
+                    <img *ngIf="student" src="{{student.phurl}}" width="200px" height="200px" class="img-thumbnail" alt="">
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <ngx-barcode [bc-value]="bcvalue" [bc-display-value]="true"></ngx-barcode>
+                <ngx-qrcode 
+                    [elementType]="elementType" 
+                    [value] = "value"
+                    cssClass = "aclass"
+                    [title] = "title"
+                    >
+                </ngx-qrcode>
+            </div>
+        </div>
+        <div> 
+           
+        </div>
+        <div>
+            <img *ngIf="student" src="{{student.js1url}}" width="200px" height="200px" class="img-thumbnail" alt="">
+        </div>
+        <div>
+            <img *ngIf="student" src="{{student.js2url}}" width="200px" height="200px" class="img-thumbnail" alt="">
+        </div>
+        <div>
+            <img *ngIf="student" src="{{student.sj1url}}" width="200px" height="200px" class="img-thumbnail" alt="">
+        </div>
+        <div>
+            <img *ngIf="student" src="{{student.bm1url}}" width="200px" height="200px" class="img-thumbnail" alt="">
+        </div>
+        <div>
+            <img *ngIf="student" src="{{student.bm2url}}" width="200px" height="200px" class="img-thumbnail" alt="">
+        </div>
+        <div>
+            <img *ngIf="student" src="{{student.bw1url}}" width="200px" height="200px" class="img-thumbnail" alt="">
+        </div>
+        <div>
+            <img *ngIf="student" src="{{student.bw2url}}" width="200px" height="200px" class="img-thumbnail" alt="">
+        </div>
+    </div> -->
+</div>

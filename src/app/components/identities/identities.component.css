@@ -1,0 +1,85 @@
+.id0 {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.id1 {
+    font-family: 'Cairo', sans-serif;
+	font-size: 1.05em;
+	font-weight: 900;
+	line-height: 1.2;
+	margin: 0;
+	color: black;
+}
+.id2 {
+    font-family: 'Cairo', sans-serif;
+	font-size: 0.8em;
+	font-weight: 700;
+	line-height: 1.0;
+    margin: 0;
+    margin-top: 3px;
+    margin-bottom: 3px;
+	color: black;
+}
+.id3 {
+    font-family: 'Cairo', sans-serif;
+	font-size: 0.8em;
+	font-weight: 700;
+	line-height: 1.3;
+    margin: 0;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    color: navy;
+    background-color: lightcyan;
+    border-radius: 5px;
+}
+.id4{
+    background-color: red;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: black;
+}
+.id5{
+    font-family: 'Cairo', sans-serif;
+	font-size: 1.0em;
+	font-weight: 700;
+    vertical-align: middle;
+    background-color: transparent;
+}
+.id6{
+    font-family: 'Cairo', sans-serif;
+	font-size: 1.0em;
+	font-weight: 700;
+	line-height: 1.3;
+    margin: 0;
+    margin-right: 10px;
+    margin-left: 10px;
+    float: right;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: transparent;
+}
+
+.id7 {
+    font-family: 'Cairo', sans-serif;
+	font-size: 1.1em;
+	font-weight: 700;
+	line-height: 1.0;
+    margin: 0;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding: 10px;
+    background-color: red;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: white;
+}
+.id8 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.5em;
+    font-weight: bolder;
+	font-weight: 700;
+	line-height: 1.0;
+    margin: 0;
+    color: black;
+    padding: 14px;
+}

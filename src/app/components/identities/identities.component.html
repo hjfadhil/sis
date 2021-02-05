@@ -1,0 +1,159 @@
+<div id="elementid" style="direction: rtl; text-align: right; padding: 50px;">
+    <div class="row" *ngIf="college && department">
+        <div class="col-sm-5">
+            <table style="table-layout: fixed;  width:380px; height:210px">
+                <thead [style.border-bottom]="college?.color">
+                    <tr>
+                        <td style="width: 19%;">
+                            <img src="assets/universitylogo.jpg" style="max-height: 70px; float: right;" alt="">
+                        </td>
+                        <td style="text-align: center; width: 60%;" class="id0">
+                            <div>
+                                <div class="id1">وزارة التعليم والبحث العلمي</div>
+                                <div class="id1">جامعة البصرة</div>
+                                <div class="id1">{{college?.name}}</div>
+                                <div class="id1">هوية الطالب</div>
+                            </div>
+                        </td>
+                        <td style="width: 100px;">
+                            <img src="{{collegesettings?.logourl}}" style="max-height: 70px; float: left;" alt="">
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="padding: 2px;" class="my-2">
+                        <td class="id2"> الاســــــــــم :</td>
+                        <td class="id3">{{ student.fullname }}</td>
+                        <td style="width: 20%;" rowspan="15">
+                            <img id="img1" src="{{url}}" width="100%">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                    </tr>
+                    <tr style="padding: 2px;" class="my-2">
+                        <td  class="id2"> التولــــــــــد :</td>
+                        <td  class="id3"> {{ student.bd }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                    </tr>
+                    <tr style="padding: 2px;" class="my-2">
+                        <td  class="id2"> العنـــــــوان :</td>
+                        <td  class="id3">{{student.gaddress}} - {{student.address}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                    </tr>
+                    <tr style="padding: 2px;" class="my-2">
+                        <td  class="id2"> تاريخ الاصدار :</td>
+                        <td  class="id3">1-2-2021</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                    </tr>
+                    <tr style="padding: 2px;" class="my-2">
+                        <td  class="id2"> ناريخ النفــاذ :</td>
+                        <td  class="id3">1-2-2024</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-center id4" [style.background]="collegesettings.color" [style.color]="college.fcolor">
+                            <span class="id6">الدراسة ال{{student.study}}ة</span>
+                            <span class="id5" *ngIf="collegesettings.shdprtname">{{ department.name }}</span>
+                            <span class="id5" *ngIf="!collegesettings.shdprtname"> &nbsp; </span>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row" *ngIf="college && department">
+        <div class="col-sm-5">
+            <table style="table-layout: fixed; width:380px; height:210px">
+                <thead [style.border-bottom]="collegesettings.color" style="direction: rtl;">
+                    <tr>
+                        <td class="id7"  [style.background]="collegesettings.color" [style.color]="college.fcolor">
+                            <span style="margin-right: 20px;">الرقم الجامعي: </span> <span class="mr-4">{{ student.univnum }}</span>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span> </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center id8">
+                            <span>University of Basrah</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center id8">
+                            <span>{{ college.ename }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center id8">
+                            <span *ngIf="collegesettings.shdprtname"> {{ department.ename }} </span>
+                            <span *ngIf="!collegesettings.shdprtname"> &nbsp; </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span> </span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="id4 text-center" [style.background]="collegesettings.color">
+                            <span>
+                                <ngx-barcode [bc-value]="bcvalue" [bc-height]="40" [bc-width]="3" [bc-display-value]="false"></ngx-barcode>
+                            </span>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center text-center">
+    <button class="btn btn-primary d-print-none" (click)="print()">Print</button>
+</div>

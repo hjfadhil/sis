@@ -1,0 +1,15 @@
+<div class="container p-2" style="display: flex; justify-content: center; align-items: center; height: 90vh;">
+    <div class="border border-warning rounded p-4">
+        <div class="form-group my-2">
+            <label for="">Username</label>
+            <input type="email" class="form-control" [(ngModel)]="un">
+        </div>
+        <div class="form-group my-2">
+            <label for="">Password</label>
+            <input type="password" class="form-control" [(ngModel)]="pw">
+        </div>
+        <div class="form-group my-2 text-center">
+            <button class="btn btn-danger" (click)="submit()">Submit</button>
+        </div>
+    </div>
+</div>

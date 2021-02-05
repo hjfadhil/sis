@@ -1,0 +1,99 @@
+<div class="container" style="direction: rtl; text-align: right;">
+    <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active text-danger" aria-current="page">{{department2.name}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" name="studybtn" id="صباحي" aria-current="page" (click)="setstudy('صباحي')" style="cursor: pointer;">طلبة الصباحي</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" name="studybtn" id="مسائي" (click)="setstudy('مسائي')"  style="cursor: pointer;">طلبة المسائي</a>
+        </li>
+        
+    </ul>
+    <hr>
+    <div class="row" style="direction: rtl; text-align: right;">
+      <div class="col-sm-4 p-1">
+          <form class="d-flex">
+              <input class="form-control me-2" [(ngModel)]="search" type="search" placeholder="بحث عن الاسم" aria-label="Search">
+              <button class="btn btn-outline-success" type="button" (click)="searchf()">Search</button>
+          </form>
+          <form class="d-flex">
+              <input class="form-control me-2" [(ngModel)]="examnum" type="search" placeholder="بحث عن الرقم الامتحاني" aria-label="Search">
+              <button class="btn btn-outline-warning" type="button" (click)="searchf2()">Search</button>
+          </form>
+          <form class="d-flex">
+              <input class="form-control me-2" [(ngModel)]="phone" type="search" placeholder="بحث عن رقم الهاتف" aria-label="Search">
+              <button class="btn btn-outline-info" type="button" (click)="searchf4()">Search</button>
+          </form>
+          <form class="d-flex">
+              <input class="form-control me-2" type="search" [(ngModel)]="email" placeholder="بحث عن الايميل" aria-label="Search">
+              <button class="btn btn-outline-primary" type="button" (click)="searchf3()">Search</button>
+          </form>
+          <form class="d-flex justify-content-center mt-1">
+              <button class="btn btn-outline-info" (click)="getByDate()">Date</button>
+              <input class="form-control" type="date" name="seldate" id="seldate" [(ngModel)]="seldate">
+          </form>
+      </div>
+      <!-- List -->
+      <div class="col-sm-8" >
+          <nav aria-label="Page navigation example" *ngIf="!loading" style="direction: rtl; text-align: right;">
+              <ul class="pagination"  style="direction: rtl; text-align: right;">
+                <li class="page-item">
+                  <a class="page-link" style="cursor: pointer;" (click)="prevstipper()" title="previous" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li *ngFor="let pi of [].constructor(pages); let i = index" id="{{i+1+pagestepper}}" class="page-item"><a style="cursor: pointer;" class="page-link" (click)="gonext(i+1+pagestepper)">{{i+1+pagestepper}}</a></li>
+                <li class="page-item">
+                  <a class="page-link" style="cursor: pointer;" (click)="nextstipper()" title="next" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+          </nav>
+          <div  style="display: flex; align-items: center; justify-content: center; width: 100%">
+              <div class="spinner-border text-danger text-center p-4 mt-5" *ngIf="loading" role="status">
+                  <span class="visually-hidden"></span>
+              </div>
+          </div>
+          <div class="alert alert-danger my-5 text-center" *ngIf="loading">
+              <span>
+                  يرجى الانتظار جاري تحميل البيانات
+              </span>
+          </div>
+          <div class="alert alert-danger text-center" *ngIf="students.length == 0 && !loading">No Data ....</div>
+          <ul class="list-group" *ngIf="!loading">
+              <li class="list-group-item list-group-item-action" *ngFor="let std of students; let i = index" style="cursor: pointer; font-size: 1.25rem;" [ngClass]="{'lightgreen': std.uf}">
+                  <span class="ml-2">{{i+1+prevnum}}- <img src="{{std.purl}}" class="mx-4" width="24px" height="24px" class="rounded-circle" alt=""></span><span class="mx-4" style="font-size: 1.25rem;" (click)="selstd(std)">{{std.name}}</span>
+                  <div class="form-check" style="float: left;">
+                      <input class="form-check-input cbdelete" style="margin-right: 10px; margin-left: 10px;" [attr.id]="std.id" (change)="chechedf(id.checked)" name="cbdelete" #id type="checkbox" value="">
+                      <span style="float:left; cursor: pointer; margin-right:30px" (click)="filter1(std)"><mat-icon class="mat-18 text-warning">filter_alt</mat-icon></span>
+                  </div>
+                  <span style="float: left;">{{rtime(std.rd)}}</span>
+              </li>
+          </ul>
+      </div>
+      <!-- List -->
+    </div>
+    <div class="row text-center my-3" *ngIf="!loading" style="direction: rtl; text-align: right;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-8">
+            <nav aria-label="Page navigation example" >
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" style="cursor: pointer;" (click)="prevstipper()" title="previous{{pagestepper}}" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li *ngFor="let pi of [].constructor(pages); let i = index" id="{{i+1+pagestepper}}" class="page-item"><a style="cursor: pointer;" class="page-link" (click)="gonext(i+1+pagestepper)">{{i+1+pagestepper}}</a></li>
+                  <li class="page-item">
+                    <a class="page-link" style="cursor: pointer;" (click)="nextstipper()" title="next" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

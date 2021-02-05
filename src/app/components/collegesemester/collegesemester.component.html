@@ -1,0 +1,8 @@
+<div class="py-2 px-4" style="direction: rtl; text-align: right;">
+    <div *ngIf="!academicyear" class="alert alert-danger text-center">
+        يجب تحديد عام دراسي قبل العمل
+    </div>
+    <div *ngIf="academicyear" class="alert alert-success text-center">
+        العام الدراسي الحالي {{academicyear.ay}}
+    </div>
+</div>

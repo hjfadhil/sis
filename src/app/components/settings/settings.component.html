@@ -1,0 +1,25 @@
+<div class="container text-center" style="direction: rtl; text-align: right;">
+    <h1>University of Basrah</h1>
+    <h1 class="text-primary">كلية {{ college?.name?.ar }}</h1>
+    <hr>
+    <h2 class="text-dark">شعار الكلية</h2>
+    <div class="card" style="width: 18rem; margin: auto;">
+        <img [src]="logourl" alt="">
+    </div>
+    <div class="mt-2">
+        <button class="btn btn-primary" (click)="openlogof()">تعديل</button>
+        <input type="file" name="logof" id="logof" (change)="logofc($event)" hidden>
+    </div>
+    <hr>
+    <h2 class="text-dark">لون علم الكلية</h2>
+    <div class="card" style="width: 9rem; height: 9rem; margin: auto;" [(colorPicker)]="color" [style.background]="color"></div>
+    <div class="mt-2">
+        <button class="btn btn-primary" (click)="changecolor()">تعديل</button>
+    </div>
+    <hr>
+    <div style="direction: rtl; text-align: right;" class="mb-5">
+        <section class="example-section mr-5" style="direction: rtl; text-align: right;">
+                <mat-slide-toggle [(ngModel)]="shdprtname" (change)="upddprtname()"> <span  style="margin:10px; color:blue; font-weight:bold"> اظهار اسم القسم في هوية الطالب</span></mat-slide-toggle>
+        </section>
+    </div>
+</div>

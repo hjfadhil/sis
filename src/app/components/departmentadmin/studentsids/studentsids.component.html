@@ -1,0 +1,6 @@
+<div *ngIf="!academicyear" class="alert alert-danger">
+    يجب تحديد عام دراسي قبل العمل
+</div>
+<div *ngIf="academicyear" class="alert alert-success">
+    {{academicyear.ay}}
+</div>

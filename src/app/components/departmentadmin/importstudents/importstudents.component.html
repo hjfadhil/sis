@@ -1,0 +1,22 @@
+<div class="py-2 px-4" style="direction: rtl; text-align: right;">
+    <div *ngIf="!academicyear" class="alert alert-danger text-center">
+        يجب تحديد عام دراسي قبل العمل
+    </div>
+    <div *ngIf="academicyear" class="alert alert-success text-center">
+        العام الدراسي الحالي {{academicyear.ay}}
+    </div>
+
+    <div class="border border-primary-rounded-p-2">
+        <div class="row">
+            <div class="col-sm-4">
+                <label for="">اسم الملف</label>
+                <input type="text" disabled class="form-control" value="{{filename}}">
+                <button class="btn btn-sm btn-outline-primary" (click)="openfile()">Browse</button>
+                <input type="file" id="inpf" hidden (change)="ifc($event)" accept=".xlsx">
+            </div>
+            <div class="col-sm-4">
+                
+            </div>
+        </div>
+    </div>
+</div>

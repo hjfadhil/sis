@@ -1,0 +1,41 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
+      <mat-toolbar class="text-warning border-bottom ">S.I.S <span class="spacer"></span><mat-icon class="mat-18" class="text-danger float-left">account_balance</mat-icon></mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item id="stdt" style="text-decoration: none; text-align: center; color: blue;">الطلبة</a>
+        <a mat-list-item href="#" class="nstdt" [routerLink]="['/collegeadmin', {outlets: {'col':['newstudent']}}]" routerLinkActive="router-link-active" class="text-primary"><mat-icon class="mat-18">person_add</mat-icon><span class="spacer"></span><span>طالب جديد</span></a>
+        <a mat-list-item href="#" class="nstdt" [routerLink]="['/collegeadmin', {outlets: {'col':['importstudents']}}]" routerLinkActive="router-link-active" class="text-primary"><mat-icon class="mat-18" class="text-danger">system_update_alt</mat-icon><span class="spacer"></span><span>استيراد طلبة</span></a>
+        <a mat-list-item href="#" class="nstdt" [routerLink]="['/collegeadmin', {outlets: {'col':['studentslist']}}]" routerLinkActive="router-link-active" class="text-primary"><mat-icon class="mat-18" class="text-info">list_alt</mat-icon><span class="spacer"></span><span>قائمة الطلاب</span></a>
+        <a mat-list-item href="#" class="nstdt" [routerLink]="['/collegeadmin', {outlets: {'col':['exportstudents']}}]" routerLinkActive="router-link-active" class="text-primary"><mat-icon class="mat-18" class="text-warning">list_alt</mat-icon><span class="spacer"></span><span>تصدير الطلاب</span></a>
+        <a mat-list-item href="#" class="nstdt" [routerLink]="['/collegeadmin', {outlets: {'col':['studentsids']}}]" routerLinkActive="router-link-active" class="text-primary"><mat-icon class="mat-18" class="text-primary">people</mat-icon><span class="spacer"></span><span>ارقام تعريف</span></a>
+        <mat-divider></mat-divider>
+        <a mat-list-item class="nstdt" style="text-decoration: none; text-align: center; color: darkblue;">اعدادات</a>
+        <a mat-list-item href="#" class="nstdt" [routerLink]="['/collegeadmin', {outlets: {'col':['years']}}]" routerLinkActive="router-link-active" class="text-primary"><mat-icon class="mat-18">calendar_today</mat-icon><span class="spacer"></span><span>العام الدراسي</span></a>
+        <a mat-list-item href="#" class="nstdt" [routerLink]="['/collegeadmin', {outlets: {'col':['semesters']}}]" routerLinkActive="router-link-active" class="text-primary"><mat-icon class="mat-18" class="text-danger">integration_instructions</mat-icon><span class="spacer"></span><span>الفصل الدراسي</span></a>
+        <mat-divider></mat-divider>
+        <a mat-list-item href="#" class="nstdt">الاقسام العلمية</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item href="#" class="nstdt" (click)="logout()">تسجيل الخروج</a>
+        
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <span>sis</span>
+      </mat-toolbar> 
+      <router-outlet name="col"></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+  
